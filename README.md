@@ -1,6 +1,11 @@
-# toko-bunga
-tugas-pemrogramman-web-2 
 
-# npm install
+# Install
 
-# 
+    npm install
+    composer install
+
+# make model
+
+    php artisan make:model production -m
+
+    php artisan migrate
