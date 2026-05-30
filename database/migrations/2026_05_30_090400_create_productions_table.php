@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('productions', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->integer('harga');
+            $table->integer('stok');
+            $table->text('deskripsi');
             $table->timestamps();
         });
     }
@@ -23,5 +27,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('productions');
+
     }
 };
