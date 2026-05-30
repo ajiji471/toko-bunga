@@ -9,3 +9,7 @@
     php artisan migrate
 # make controller porduct
     php artisan make:controller ProductController --resource
+# running laravel
+    php artisan serve
+# running tailwind
+    npm run dev
