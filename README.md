@@ -7,3 +7,5 @@
     php artisan make:model production -m
 # migrate
     php artisan migrate
+# make controller porduct
+    php artisan make:controller ProductController --resource
