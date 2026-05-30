@@ -21,12 +21,12 @@
             </tr>
         </thead>
         <tbody>
-            @forelse ($products as $product)
+            @forelse ($products as $p)
                 <tr class="odd:bg-white even:bg-gray-50 border-b">
-                    <td class="px-4 py-2">{{ $product->name }}</td>
-                    <td class="px-4 py-2">Rp {{ number_format($product->harga, 0, ',', '.') }}</td>
-                    <td class="px-4 py-2">{{ $product->stok }}</td>
-                    <td class="px-4 py-2">{{ $product->deskripsi }}</td>
+                    <td class="px-4 py-2">{{ $p->nama_barang }}</td>
+                    <td class="px-4 py-2">Rp {{ number_format($p->harga, 0, ',', '.') }}</td>
+                    <td class="px-4 py-2">{{ $p->stok }}</td>
+                    <td class="px-4 py-2">{{ $p->deskripsi }}</td>
                 </tr>
             @empty
                 <tr>

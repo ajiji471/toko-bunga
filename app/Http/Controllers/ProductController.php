@@ -22,7 +22,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+    // 
     }
 
     /**
@@ -30,7 +30,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            //menyimpan data
+        $request->validate([
+            'nama_barang' => 'required',
+            'harga' => 'required|numeric',
+            'stok' => 'required|integer',
+            'deskripsi' => 'required',
+        ]);
+        \App\Models\product::create($request->all());
+        return redirect()->route('products.index')->with('success', 'Barang Berhasil ditambahkan');
     }
 
     /**
