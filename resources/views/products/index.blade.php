@@ -30,18 +30,13 @@
                     <td class="px-4 py-2">{{ $p->stok }}</td>
                     <td class="px-4 py-2">{{ $p->deskripsi }}</td>
                     <td class="px-4 py-2">
-                        <button href="#"
-                            class="text-blue-500 hover:text-blue-700 font-bold">
-                            <i class="material-icons">edit</i>
+                        <button onclick="toggle_edit({{ $p }})" class="text-blue-500 hover:text-blue-700 font-bold">
+                            <span class="material-icons">edit</span>
                         </button>
-                        <form action="#" method="POST" class="inline">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit"
-                                class="text-red-500 hover:text-red-700 font-bold ml-2">
-                                 <i class="material-icons">delete</i>
+                            <button type="submit" class="text-red-500 hover:text-red-700 font-bold ml-2">
+                                <span class="material-icons">delete</span>
                             </button>
-                        </form>
+                    </td>
                 </tr>
             @empty
                 <tr>
@@ -77,8 +72,7 @@
                 <div class="mb-4">
                     <label for="deskripsi" class="block text-gray-700">Deskripsi</label>
                     <textarea name="deskripsi" id="deskripsi"
-                        class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300"
-                        rows="4"></textarea>
+                        class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300" rows="4"></textarea>
                 </div>
                 <div class="flex justify-end">
                     <button type="button" onclick="toggle_modal()"
@@ -86,16 +80,70 @@
                     <button type="submit"
                         class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Simpan</button>
                 </div>
+            </form>
         </div>
+    </div>
+    {{-- form modal edit --}}
+    <div id="modal-edit-item" class="fixed inset-0 bg-black/50 hidden items-center justify-center">
+        <div class="bg-white p-6 rounded shadow-lg w-96">
+            <h2 class="text-2xl font-bold text-center"> Edit Item</h2>
+            <form id="form-edit" method="POST" class="mt-4">
+                @csrf
+                @method('PUT')
+                <div class="mb-4">
+                    <label for="nama_barang" class="block text-gray-700">Nama Item</label>
+                    <input type="text" name="nama_barang" id="edit_nama_barang"
+                        class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300"
+                        required>
+                </div>
+                <div class="mb-4">
+                    <label for="harga" class="block text-gray-700">Harga</label>
+                    <input type="number" name="harga" id="edit_harga"
+                        class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300"
+                        required>
+                </div>
+                <div class="mb-4">
+                    <label for="stok" class="block text-gray-700">Stok</label>
+                    <input type="number" name="stok" id="edit_stok"
+                        class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300"
+                        required>
+                </div>
+                <div class="mb-4">
+                    <label for="deskripsi" class="block text-gray-700">Deskripsi</label>
+                    <textarea name="deskripsi" id="edit_deskripsi"
+                        class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300" rows="4"></textarea>
+                </div>
+                <div class="flex justify-end">
+                    <button type="button" onclick="document.getElementById('modal-edit-item').classList.replace('flex', 'hidden')"
+                        class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-2">Batal</button>
+                    <button type="submit"
+                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-        {{-- script --}}
-        <script>
-            function toggle_modal() {
-                const modal = document.getElementById('modal-tambah-item');
-                modal.classList.toggle('hidden');
-                modal.classList.toggle('flex');
-            }
-        </script>
+
+    {{-- script --}}
+    <script>
+        function toggle_modal() {
+            const modal = document.getElementById('modal-tambah-item');
+            modal.classList.toggle('hidden');
+            modal.classList.toggle('flex');
+        }
+        function toggle_edit(item) {
+            const modal = document.getElementById('modal-edit-item');
+            // mengatur route form edit dengan id produk
+            document.getElementById('form-edit').action = '/products/' + item.id;
+            // mengisi value form edit dengan data produk
+            document.getElementById('edit_nama_barang').value = item.nama_barang;
+            document.getElementById('edit_harga').value = item.harga;
+            document.getElementById('edit_stok').value = item.stok;
+            document.getElementById('edit_deskripsi').value = item.deskripsi;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+    </script>
 
 </body>
 
