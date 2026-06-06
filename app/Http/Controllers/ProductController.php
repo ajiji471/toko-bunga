@@ -62,7 +62,16 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //update product
+         $request->validate([
+            'nama_barang' => 'required',
+            'harga' => 'required|numeric',
+            'stok' => 'required|integer',
+            'deskripsi' => 'required',
+        ]);
+        $product = \App\Models\product::findOrFail($id);
+        $product->update($request->all());
+        return redirect()->route('products.index')->with('success', 'Barang Berhasil diupdate');
     }
 
     /**
