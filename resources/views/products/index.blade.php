@@ -3,6 +3,7 @@
 <head>
     <title>{{ config('app.name') }} - Table Item</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body class="p-6">
@@ -18,6 +19,7 @@
                 <th class="px-4 py-2 text-left border-b">Harga</th>
                 <th class="px-4 py-2 text-left border-b">Stok</th>
                 <th class="px-4 py-2 text-left border-b">Deskripsi</th>
+                <th class="px-4 py-2 text-left border-b">Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +29,19 @@
                     <td class="px-4 py-2">Rp {{ number_format($p->harga, 0, ',', '.') }}</td>
                     <td class="px-4 py-2">{{ $p->stok }}</td>
                     <td class="px-4 py-2">{{ $p->deskripsi }}</td>
+                    <td class="px-4 py-2">
+                        <button href="#"
+                            class="text-blue-500 hover:text-blue-700 font-bold">
+                            <i class="material-icons">edit</i>
+                        </button>
+                        <form action="#" method="POST" class="inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit"
+                                class="text-red-500 hover:text-red-700 font-bold ml-2">
+                                 <i class="material-icons">delete</i>
+                            </button>
+                        </form>
                 </tr>
             @empty
                 <tr>
