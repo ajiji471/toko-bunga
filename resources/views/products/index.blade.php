@@ -30,17 +30,24 @@
                     <td class="px-4 py-2">{{ $p->stok }}</td>
                     <td class="px-4 py-2">{{ $p->deskripsi }}</td>
                     <td class="px-4 py-2">
-                        <button onclick="toggle_edit({{ $p }})" class="text-blue-500 hover:text-blue-700 font-bold">
+                        <button onclick="toggle_edit({{ $p }})"
+                            class="text-blue-500 hover:text-blue-700 font-bold">
                             <span class="material-icons">edit</span>
                         </button>
-                            <button type="submit" class="text-red-500 hover:text-red-700 font-bold ml-2">
-                                <span class="material-icons">delete</span>
-                            </button>
+                        <button onclick="if(confirm('Apakah Anda yakin ingin menghapus item ini?')) {
+                            document.getElementById('form-delete-{{ $p->id }}').submit();
+                        }" type="button" class="text-red-500 hover:text-red-700 font-bold ml-2">
+                            <span class="material-icons">delete</span>
+                        </button>
+                        <form id="form-delete-{{ $p->id }}" action="{{ route('products.destroy', $p->id) }}" method="POST" class="inline">
+                            @csrf
+                            @method('DELETE')
+                        </form>
                     </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="4" class="px-4 py-4 text-center text-gray-400">Belum ada data.</td>
+                    <td colspan="5" class="px-4 py-4 text-center text-gray-400">Belum ada data.</td>
                 </tr>
             @endforelse
         </tbody>
@@ -114,7 +121,8 @@
                         class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300" rows="4"></textarea>
                 </div>
                 <div class="flex justify-end">
-                    <button type="button" onclick="document.getElementById('modal-edit-item').classList.replace('flex', 'hidden')"
+                    <button type="button"
+                        onclick="document.getElementById('modal-edit-item').classList.replace('flex', 'hidden')"
                         class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-2">Batal</button>
                     <button type="submit"
                         class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Update</button>
@@ -131,6 +139,7 @@
             modal.classList.toggle('hidden');
             modal.classList.toggle('flex');
         }
+
         function toggle_edit(item) {
             const modal = document.getElementById('modal-edit-item');
             // mengatur route form edit dengan id produk

@@ -79,6 +79,10 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        //hapus data berdasarkan id
+        $product = \App\Models\product::findOrFail($id);
+        $product->delete();
+        return redirect()->route('products.index')->with('success', 'Barang Berhasil dihapus');
+
     }
 }
