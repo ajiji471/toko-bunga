@@ -9,7 +9,7 @@
             @error('login-error')
                 <p class="text-red-500">{{ $message }}</p>  
                 @enderror
-                <form action="">
+                <form action="{{ route('login.process') }}" method="POST" class="mt-4">
                     @csrf
                     <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
                     <input type="email" name="email" id="email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md required>">
