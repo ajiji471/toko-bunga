@@ -9,3 +9,12 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+.clay-morphism {
+  backdrop-filter: blur(2px); 
+  background-color: rgba(255, 255, 255, 0); 
+  border-radius: 20px; 
+  box-shadow: 1px 10px 8px 0px rgba(156, 156, 156, 0.5), 
+  inset -6px -6px 16px 0px rgb(255, 255, 255), 
+  inset 0px 11px 28px 0px rgb(165, 165, 165, 0.3);
+}
