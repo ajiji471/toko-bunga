@@ -13,3 +13,7 @@
     php artisan serve
 # running tailwind
     npm run dev
+# create fake user
+    php artisan make:seeder UserSeeder
+# running seeder
+    php artisan db:seed --class=UserSeeder
