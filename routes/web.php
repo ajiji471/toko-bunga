@@ -8,16 +8,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::middleware('guest')->group(function () {
+    // halaman login
+    Route::get('/login', [AuthController::class, 'showLogin'])->name('login'); 
+    // proses login
+    Route::post('/login', [AuthController::class, 'login'])->name('login.process'); 
+});
 
-// halaman login 
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-// proses login
-Route::post('/login', [AuthController::class, 'login'])->name('login.process');
-// proses logout
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout'); 
+// proses logout (bisa diakses user yang sudah login)
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
 
-// protect halaman product
+// === PROTECTED ROUTES ===
 Route::middleware('auth')->group(function () {
-    Route::resource('products', ProductController::class);
+    Route::resource('products', ProductController::class); 
 });
