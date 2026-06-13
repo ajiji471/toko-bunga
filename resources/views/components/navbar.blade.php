@@ -1,3 +1,4 @@
+
 <nav class="w-full bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-rose-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
@@ -14,9 +15,14 @@
                     <div class="flex items-center gap-4">
                         {{-- Link Produk --}}
                         <a href="{{ route('products.index') }}"
-                           class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-600 hover:text-rose-600 transition duration-200">
+                           class="{{ request()->routeIs('products.index') ? 'border-b-2 border-rose-500' : 'text-gray-600 hover:text-rose-600' }} flex items-center gap-2 px-4 py-2 text-sm font-medium transition duration-200">
                             <i data-lucide="package" class="w-4 h-4"></i>
                             Produk
+                        </a>
+                        <a href="#"
+                           class="{{ request()->routeIs('#') ? 'border-b-2 border-rose-500' : 'text-gray-600 hover:text-rose-600' }} flex items-center gap-2 px-4 py-2 text-sm font-medium transition duration-200">
+                            <i data-lucide="ShoppingBag" class="w-4 h-4"></i>
+                            Invoices
                         </a>
 
                         {{-- Dropdown User --}}
