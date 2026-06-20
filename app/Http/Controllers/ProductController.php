@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\product;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ProductController extends Controller
 {
@@ -84,5 +85,12 @@ class ProductController extends Controller
         $product->delete();
         return redirect()->route('products.index')->with('success', 'Barang Berhasil dihapus');
 
+    }
+    // fungsi download pdf
+    public function downloadPdf()
+    {
+        $products = \App\Models\product::all();
+        $pdf = Pdf::loadView('products/product_pdf', compact('products'));
+        return $pdf->download('Laporan-Data-Product-MyFlorist.pdf');
     }
 }

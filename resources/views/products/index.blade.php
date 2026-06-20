@@ -13,11 +13,17 @@
                 </h1>
                 <p class="mt-1 text-sm text-gray-500">Kelola produk bunga MyFlorist</p>
             </div>
-            <button onclick="toggleModal()" 
-                    class="flex items-center gap-2 bg-rose-500 hover:bg-rose-600 text-white font-semibold py-2.5 px-5 rounded-xl transition duration-200 shadow-md shadow-rose-200">
-                <i data-lucide="plus" class="w-5 h-5"></i>
-                Tambah Item
-            </button>
+            <div class="flex flex-row gap-4">
+                <button onclick="toggleModal()" 
+                        class="flex items-center gap-2 bg-rose-500 hover:bg-rose-600 text-white font-semibold py-2.5 px-5 rounded-xl transition duration-200 shadow-md shadow-rose-200">
+                    <i data-lucide="plus" class="w-5 h-5"></i>
+                    Tambah Item
+                </button>
+                <a class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-2.5 px-5 rounded-xl transition duration-200 shadow-md shadow-rose-200" href="{{ route('products.pdf') }}">
+                    Export to PDF
+                </a>
+            </div>
+            
         </div>
 
         <!-- Table Card -->

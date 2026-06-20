@@ -17,3 +17,5 @@
     php artisan make:seeder UserSeeder
 # running seeder
     php artisan db:seed --class=UserSeeder
+# add tool pdf
+    composer require barryvdh/laravel-dompdf
