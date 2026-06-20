@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth; // ← TAMBAHKAN INI
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -17,7 +17,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $akun = $request->validate([
-            'email' => 'required|email',    // ← ganti 'username' jadi 'email'
+            'email' => 'required|email', 
             'password' => 'required'
         ]);
 
@@ -25,13 +25,13 @@ class AuthController extends Controller
         if (Auth::attempt($akun)) {
             // buat session
             $request->session()->regenerate();
-            return redirect()->route('products.index'); // ← 'products' (plural)
+            return redirect()->route('products.index');
         }
 
         // jika email/password salah, kembalikan ke login dengan pesan error
         return back()->withErrors([
-            'login-error' => 'Login Gagal! Pastikan email dan password benar.' // ← sesuaikan key
-        ])->withInput(); // ← tambahkan withInput() agar email tetap terisi
+            'login-error' => 'Login Gagal! Pastikan email dan password benar.' 
+        ])->withInput(); 
     }
 
     // proses logout
