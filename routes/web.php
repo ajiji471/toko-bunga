@@ -25,4 +25,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/products/download-pdf', [ProductController::class, 'downloadPdf'])->name('products.pdf');
     Route::resource('products', ProductController::class); 
     Route::get('transactions', [TransactionController::class, 'index'])->name('transactions.index');
+    Route::post('transactions', [TransactionController::class, 'store'])->name('transactions.store');
+    
 });

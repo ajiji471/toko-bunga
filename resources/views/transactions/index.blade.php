@@ -30,7 +30,7 @@
 
             {{-- Card Form --}}
             <div class="rounded-2xl border border-rose-100 bg-white p-8 shadow-lg shadow-rose-100/50">
-                <form action="" method="POST">
+                <form action="{{ route('transactions.store') }}" method="POST">
                     @csrf
 
                     {{-- Dropdown --}}
