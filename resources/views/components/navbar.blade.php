@@ -19,10 +19,10 @@
                             <i data-lucide="package" class="w-4 h-4"></i>
                             Produk
                         </a>
-                        <a href="#"
-                           class="{{ request()->routeIs('#') ? 'border-b-2 border-rose-500' : 'text-gray-600 hover:text-rose-600' }} flex items-center gap-2 px-4 py-2 text-sm font-medium transition duration-200">
+                        <a href="{{ route('transactions.index') }}"
+                           class="{{ request()->routeIs('transactions.index') ? 'border-b-2 border-rose-500' : 'text-gray-600 hover:text-rose-600' }} flex items-center gap-2 px-4 py-2 text-sm font-medium transition duration-200">
                             <i data-lucide="ShoppingBag" class="w-4 h-4"></i>
-                            Invoices
+                            Transaksi
                         </a>
 
                         {{-- Dropdown User --}}

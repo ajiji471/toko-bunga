@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TransactionController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,4 +24,5 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middl
 Route::middleware('auth')->group(function () {
     Route::get('/products/download-pdf', [ProductController::class, 'downloadPdf'])->name('products.pdf');
     Route::resource('products', ProductController::class); 
+    Route::get('transactions', [TransactionController::class, 'index'])->name('transactions.index');
 });
