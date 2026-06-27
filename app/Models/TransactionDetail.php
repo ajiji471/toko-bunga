@@ -14,4 +14,7 @@ class TransactionDetail extends Model
             'harga_satuan',
             'subtotal',
         ];
+        public function product(){
+            return $this->belongsTo(product::class, 'product_id');
+        }
 }

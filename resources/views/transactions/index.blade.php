@@ -1,7 +1,7 @@
 @extends('components.layouts.app')
 @section('title', 'Transaksi - MyFlorist')
 @section('content')
-    <div class="min-h-screen bg-rose-50 py-10 px-4">
+    <div class="py-10 px-4">
         <div class="mx-auto max-w-2xl">
 
             {{-- Header --}}
@@ -45,11 +45,11 @@
                             {{-- Trigger Button --}}
                             <button type="button" id="dropdown_trigger" onclick="toggleDropdown()"
                                 class="flex w-full items-center gap-3 rounded-xl border-2 border-rose-200 bg-white px-4 py-3.5 text-left shadow-sm outline-none transition-all hover:border-rose-300 focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10">
-                                <i data-lucide="flower-2" class="h-5 w-5 flex-shrink-0 text-rose-400"></i>
+                                <i data-lucide="flower-2" class="h-5 w-5 shrink-0 text-rose-400"></i>
                                 <span id="selected_text" class="flex-1 text-sm font-medium text-gray-400">-- Pilih Item
                                     --</span>
                                 <i data-lucide="chevron-down" id="chevron_icon"
-                                    class="h-5 w-5 flex-shrink-0 text-rose-400 transition-transform duration-200"></i>
+                                    class="h-5 w-5 shrink-0 text-rose-400 transition-transform duration-200"></i>
                             </button>
 
                             {{-- Dropdown Panel --}}
@@ -67,7 +67,7 @@
                                         <div class="flex items-center justify-between gap-2">
                                             <span class="font-medium">{{ $p->nama_barang }}</span>
                                             <span
-                                                class="flex-shrink-0 rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-bold text-green-700">
+                                                class="shrink-0 rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-bold text-green-700">
                                                 stok: {{ $p->stok }}
                                             </span>
                                         </div>
@@ -114,7 +114,6 @@
     </div>
 
     {{-- Lucide Icons --}}
-    <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         lucide.createIcons();
 

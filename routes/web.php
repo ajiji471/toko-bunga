@@ -24,7 +24,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middl
 Route::middleware('auth')->group(function () {
     Route::get('/products/download-pdf', [ProductController::class, 'downloadPdf'])->name('products.pdf');
     Route::resource('products', ProductController::class); 
-    Route::get('transactions', [TransactionController::class, 'index'])->name('transactions.index');
-    Route::post('transactions', [TransactionController::class, 'store'])->name('transactions.store');
+    Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
+    Route::post('/transactions', [TransactionController::class, 'store'])->name('transactions.store');
+    Route::get('/history', [TransactionController::class, 'history'])->name('transactions.history');
     
 });

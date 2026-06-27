@@ -18,7 +18,7 @@
         @include('components.navbar')
         
         <!-- Main Content -->
-        <main class="flex-grow relative z-10">
+        <main class="grow relative z-10">
             @yield('content')
         </main>
         

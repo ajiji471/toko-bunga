@@ -16,6 +16,11 @@ class TransactionController extends Controller
         return view('transactions.index', compact('products'));
     }
 
+    public function history(){
+        $history = transaction::with('details.product')->latest()->get();
+        return view('transactions.history', compact('history'));
+    }
+
     public function store(Request $request)
     {
         $request->validate([

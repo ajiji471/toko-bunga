@@ -24,6 +24,11 @@
                             <i data-lucide="ShoppingBag" class="w-4 h-4"></i>
                             Transaksi
                         </a>
+                        <a href="{{ route('transactions.history') }}"
+                           class="{{ request()->routeIs('transactions.history') ? 'border-b-2 border-rose-500' : 'text-gray-600 hover:text-rose-600' }} flex items-center gap-2 px-4 py-2 text-sm font-medium transition duration-200">
+                            <i data-lucide="History" class="w-4 h-4"></i>
+                            Riwayat
+                        </a>
 
                         {{-- Dropdown User --}}
                         <div class="relative" x-data="{ open: false }" @click.away="open = false">
